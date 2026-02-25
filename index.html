@@ -285,7 +285,21 @@
     gap: 20px;
     justify-content: center;
   }
-  #services .service {
+  /* Service filter */
+  #service-filter {
+    display: block;
+    margin: 0 auto 1.5rem;
+    width: 80%;
+    max-width: 400px;
+    padding: 0.5rem 0.75rem;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  #service-filter:focus {
+    border-color: #da1212;
+    outline: none;
+  }  #services .service {
     background-color: #f4f4f4;
     border-radius: 8px;
     padding: 20px;
@@ -584,40 +598,177 @@
 
 <section id="services" role="region" aria-labelledby="services-heading">
   <h2 id="services-heading">Our Services</h2>
+  <input type="text" id="service-filter" aria-label="Filter services" placeholder="Search services…" />
   <div class="service-list" role="list">
     <article class="service" role="listitem">
-      <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-        <polyline points="9 22 9 12 15 12 15 22"></polyline>
-      </svg>
+      <svg class="service-icon" viewBox="0 0 24 24"><text x="12" y="16" font-size="14" text-anchor="middle">🏠</text></svg>
       <h3>Residential Electrical</h3>
       <p>Complete home wiring, lighting, and electrical repairs done with care.</p>
     </article>
     <article class="service" role="listitem">
-      <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M3 21h18V9H3z"></path>
-        <path d="M3 9V3h18v6"></path>
-        <line x1="9" y1="21" x2="9" y2="9"></line>
-        <line x1="15" y1="21" x2="15" y2="9"></line>
-      </svg>
+      <svg class="service-icon" viewBox="0 0 24 24"><text x="12" y="16" font-size="14" text-anchor="middle">🏢</text></svg>
       <h3>Commercial Electrical</h3>
       <p>Reliable electrical installation and maintenance for businesses big and small.</p>
     </article>
     <article class="service" role="listitem">
-      <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-      </svg>
+      <svg class="service-icon" viewBox="0 0 24 24"><text x="12" y="16" font-size="14" text-anchor="middle">🛡️</text></svg>
       <h3>Electrical Safety Inspections</h3>
       <p>Certified inspections ensuring your property meets all electrical safety standards.</p>
     </article>
     <article class="service" role="listitem">
-      <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="12" cy="12" r="10"></circle>
-        <line x1="12" y1="8" x2="12" y2="16"></line>
-        <line x1="8" y1="12" x2="16" y2="12"></line>
-      </svg>
+      <svg class="service-icon" viewBox="0 0 24 24"><text x="12" y="16" font-size="14" text-anchor="middle">⚡</text></svg>
       <h3>Emergency Electrical Services</h3>
       <p>Fast response for electrical emergencies 24/7 so you’re never left in the dark.</p>
+    </article>
+    <article class="service" role="listitem">
+      <svg class="service-icon" viewBox="0 0 24 24"><text x="12" y="16" font-size="14" text-anchor="middle">🔌</text></svg>
+      <h3>Home EV Charger Installation</h3>
+      <p>Safe and efficient installation of home electric vehicle charging stations.</p>
+    </article>
+    <article class="service" role="listitem">
+      <svg class="service-icon" viewBox="0 0 24 24"><text x="12" y="16" font-size="14" text-anchor="middle">🔋</text></svg>
+      <h3>Backup Generator Services</h3>
+      <p>Installation, repair, and maintenance of professional backup generators.</p>
+    </article>
+    <article class="service" role="listitem">
+      <svg class="service-icon" viewBox="0 0 24 24"><text x="12" y="16" font-size="14" text-anchor="middle">🕒</text></svg>
+      <h3>24‑Hour Electrical Service</h3>
+      <p>Around‑the‑clock electrical service whenever you need help.</p>
+    </article>
+    <article class="service" role="listitem">
+      <svg class="service-icon" viewBox="0 0 24 24"><text x="12" y="16" font-size="14" text-anchor="middle">🔍</text></svg>
+      <h3>Professional Electrical Troubleshooting</h3>
+      <p>Expert diagnostics and solutions for complex electrical problems.</p>
+    </article>
+    <article class="service" role="listitem">
+      <svg class="service-icon" viewBox="0 0 24 24"><text x="12" y="16" font-size="14" text-anchor="middle">📊</text></svg>
+      <h3>Electrical Panel Evaluations</h3>
+      <p>Thorough inspections to assess panel health and capacity.</p>
+    </article>
+    <article class="service" role="listitem">
+      <svg class="service-icon" viewBox="0 0 24 24"><text x="12" y="16" font-size="14" text-anchor="middle">⚡</text></svg>
+      <h3>Amperage Issue Resolution</h3>
+      <p>Diagnosing and correcting overloads and circuit capacity problems.</p>
+    </article>
+    <article class="service" role="listitem">
+      <svg class="service-icon" viewBox="0 0 24 24"><text x="12" y="16" font-size="14" text-anchor="middle">🔌</text></svg>
+      <h3>Range, Dryer &amp; AC Outlet Installation</h3>
+      <p>Qualified wiring for high‑power appliances and HVAC units.</p>
+    </article>
+    <article class="service" role="listitem">
+      <svg class="service-icon" viewBox="0 0 24 24"><text x="12" y="16" font-size="14" text-anchor="middle">⚠️</text></svg>
+      <h3>Electrical Code Violation Corrections</h3>
+      <p>Identify and remedy code issues to keep your system compliant.</p>
+    </article>
+    <article class="service" role="listitem">
+      <svg class="service-icon" viewBox="0 0 24 24"><text x="12" y="16" font-size="14" text-anchor="middle">💡</text></svg>
+      <h3>Indoor &amp; Outdoor Lighting</h3>
+      <p>Design and install lighting solutions for any space.</p>
+    </article>
+    <article class="service" role="listitem">
+      <svg class="service-icon" viewBox="0 0 24 24"><text x="12" y="16" font-size="14" text-anchor="middle">⚡</text></svg>
+      <h3>Circuit Breaker Repair &amp; Upgrades</h3>
+      <p>Keep breakers functioning and upgrade panels for safety.</p>
+    </article>
+    <article class="service" role="listitem">
+      <svg class="service-icon" viewBox="0 0 24 24"><text x="12" y="16" font-size="14" text-anchor="middle">⚡</text></svg>
+      <h3>Communication &amp; Data Line Installation</h3>
+      <p>Structured wiring for phone, internet, and data networks.</p>
+    </article>
+    <article class="service" role="listitem">
+      <svg class="service-icon" viewBox="0 0 24 24"><text x="12" y="16" font-size="14" text-anchor="middle">🎨</text></svg>
+      <h3>Custom Lighting Design</h3>
+      <p>Unique lighting layouts tailored to your aesthetic and needs.</p>
+    </article>
+    <article class="service" role="listitem">
+      <svg class="service-icon" viewBox="0 0 24 24"><text x="12" y="16" font-size="14" text-anchor="middle">🔌</text></svg>
+      <h3>Dedicated Circuits</h3>
+      <p>Install extra circuits for high‑demand appliances and equipment.</p>
+    </article>
+    <article class="service" role="listitem">
+      <svg class="service-icon" viewBox="0 0 24 24"><text x="12" y="16" font-size="14" text-anchor="middle">⚡</text></svg>
+      <h3>Dimming &amp; Flickering Light Fixes</h3>
+      <p>Solutions for inconsistent or dim lighting issues.</p>
+    </article>
+    <article class="service" role="listitem">
+      <svg class="service-icon" viewBox="0 0 24 24"><text x="12" y="16" font-size="14" text-anchor="middle">🌱</text></svg>
+      <h3>Energy‑Saving Lighting Options</h3>
+      <p>Upgrade to efficient LEDs and smart bulbs to reduce costs.</p>
+    </article>
+    <article class="service" role="listitem">
+      <svg class="service-icon" viewBox="0 0 24 24"><text x="12" y="16" font-size="14" text-anchor="middle">🏊</text></svg>
+      <h3>Hot Tub &amp; Pool Wiring</h3>
+      <p>Specialized wiring for safe, code‑compliant water feature power.</p>
+    </article>
+    <article class="service" role="listitem">
+      <svg class="service-icon" viewBox="0 0 24 24"><text x="12" y="16" font-size="14" text-anchor="middle">🌀</text></svg>
+      <h3>Ceiling &amp; Attic Fan Install/Repair</h3>
+      <p>Install or fix fans to keep air flowing and rooms comfortable.</p>
+    </article>
+    <article class="service" role="listitem">
+      <svg class="service-icon" viewBox="0 0 24 24"><text x="12" y="16" font-size="14" text-anchor="middle">🛡️</text></svg>
+      <h3>Lighting Safety Recommendations</h3>
+      <p>Expert advice to make your lighting safer and more effective.</p>
+    </article>
+    <article class="service" role="listitem">
+      <svg class="service-icon" viewBox="0 0 24 24"><text x="12" y="16" font-size="14" text-anchor="middle">🚨</text></svg>
+      <h3>Motion Sensors &amp; Exterior Lighting</h3>
+      <p>Install motion sensors and exterior fixtures for security and convenience.</p>
+    </article>
+    <article class="service" role="listitem">
+      <svg class="service-icon" viewBox="0 0 24 24"><text x="12" y="16" font-size="14" text-anchor="middle">🔌</text></svg>
+      <h3>Outlets &amp; Specialty Receptacles</h3>
+      <p>Custom outlets including USB, GFCI, and other specialty receptacles.</p>
+    </article>
+    <article class="service" role="listitem">
+      <svg class="service-icon" viewBox="0 0 24 24"><text x="12" y="16" font-size="14" text-anchor="middle">📈</text></svg>
+      <h3>Power Consumption Meters</h3>
+      <p>Meters to monitor and manage your electrical usage.</p>
+    </article>
+    <article class="service" role="listitem">
+      <svg class="service-icon" viewBox="0 0 24 24"><text x="12" y="16" font-size="14" text-anchor="middle">⚡</text></svg>
+      <h3>Power Outage Solutions</h3>
+      <p>Services to restore power quickly and install backup systems.</p>
+    </article>
+    <article class="service" role="listitem">
+      <svg class="service-icon" viewBox="0 0 24 24"><text x="12" y="16" font-size="14" text-anchor="middle">💡</text></svg>
+      <h3>Recessed Lighting Installation</h3>
+      <p>Professional installation of can lights for a clean look.</p>
+    </article>
+    <article class="service" role="listitem">
+      <svg class="service-icon" viewBox="0 0 24 24"><text x="12" y="16" font-size="14" text-anchor="middle">💡</text></svg>
+      <h3>Light Bulb &amp; Ballast Replacement</h3>
+      <p>Swap out old bulbs and ballasts for improved lighting performance.</p>
+    </article>
+    <article class="service" role="listitem">
+      <svg class="service-icon" viewBox="0 0 24 24"><text x="12" y="16" font-size="14" text-anchor="middle">📱</text></svg>
+      <h3>Smart Lighting Systems</h3>
+      <p>Upgrade to smart controls and automated lighting.</p>
+    </article>
+    <article class="service" role="listitem">
+      <svg class="service-icon" viewBox="0 0 24 24"><text x="12" y="16" font-size="14" text-anchor="middle">🚨</text></svg>
+      <h3>Smoke &amp; Carbon Monoxide Detectors</h3>
+      <p>Install and test safety detectors throughout your property.</p>
+    </article>
+    <article class="service" role="listitem">
+      <svg class="service-icon" viewBox="0 0 24 24"><text x="12" y="16" font-size="14" text-anchor="middle">🔁</text></svg>
+      <h3>Transfer Switch Installation</h3>
+      <p>Install transfer switches for generator readiness.</p>
+    </article>
+    <article class="service" role="listitem">
+      <svg class="service-icon" viewBox="0 0 24 24"><text x="12" y="16" font-size="14" text-anchor="middle">🔧</text></svg>
+      <h3>Transformer Inspection &amp; Testing</h3>
+      <p>Inspect and test transformers to ensure dependable operation.</p>
+    </article>
+    <article class="service" role="listitem">
+      <svg class="service-icon" viewBox="0 0 24 24"><text x="12" y="16" font-size="14" text-anchor="middle">⚙️</text></svg>
+      <h3>Transformer Installation</h3>
+      <p>Install new transformers for commercial or industrial needs.</p>
+    </article>
+    <article class="service" role="listitem">
+      <svg class="service-icon" viewBox="0 0 24 24"><text x="12" y="16" font-size="14" text-anchor="middle">🌩️</text></svg>
+      <h3>Whole-House Surge Protector Installation</h3>
+      <p>Protect your entire home with surge protection.</p>
     </article>
   </div>
 </section>
