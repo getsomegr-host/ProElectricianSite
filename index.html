@@ -20,7 +20,7 @@
     line-height: 1.6;
     color: #222;
     scroll-behavior: smooth;
-    margin-top: 90px;
+    margin-top: 80px;
   }
   a {
     text-decoration: none;
@@ -35,9 +35,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.25rem 1rem;
+    padding: 0.5rem 1rem;
     z-index: 1000;
-    height: 90px;
+    height: 80px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
   }
   nav .menu-toggle {
     display: none;
@@ -51,15 +52,19 @@
     justify-content: center;
   }
   nav > img.nav-logo {
-    width: 140px;
+    width: 80px;
     height: auto;
     display: block;
   }
   nav > a.nav-logo-link {
     display: inline-block;
+    transition: transform 0.3s ease;
+  }
+  nav > a.nav-logo-link:hover {
+    transform: scale(1.05);
   }
   nav > a.nav-logo-link img {
-    width: 140px;
+    width: 80px;
     height: auto;
     display: block;
   }
@@ -77,13 +82,14 @@
     color: #fff;
     font-weight: 600;
     padding: 0.5rem 0.75rem;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
+    border-radius: 0;
+    transition: border-bottom 0.3s ease, color 0.3s ease;
     display: block;
+    border-bottom: 2px solid transparent;
   }
   nav li a:hover,
   nav li a:focus {
-    background-color: #da1212; /* red */
+    border-bottom: 2px solid #da1212;
     outline: none;
   }
 
@@ -103,7 +109,7 @@
     nav ul {
       display: flex;
       position: absolute;
-      top: 90px;
+      top: 80px;
       left: 0;
       right: 0;
       flex-direction: column;
@@ -241,6 +247,31 @@
     display: inline-block;
     padding-bottom: 0.5rem;
   }
+  #about {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  #about-image {
+    flex-shrink: 0;
+    width: 350px;
+    height: 300px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+
+  #about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  #about-content {
+    flex: 1;
+  }
+
   #about p {
     font-size: 1.1rem;
     max-width: 700px;
@@ -261,7 +292,21 @@
     width: 280px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
+
+  #services .service:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+  }
+
+  #services .service-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 1rem;
+    color: #da1212;
+  }
+
   #services .service h3 {
     margin-bottom: 0.75rem;
     color: #da1212;
@@ -272,26 +317,72 @@
 
   /* Testimonials */
   #testimonials .testimonial-list {
-    background-color: #e1e7f0;
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 700px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
     margin: 0 auto;
   }
+  
   #testimonials .testimonial {
-    margin-bottom: 1.5rem;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  #testimonials .testimonial:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  }
+  
+  .testimonial-stars {
+    color: #ffc107;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+  }
+  
+  .testimonial-quote {
     font-style: italic;
-    position: relative;
-    padding-left: 1rem;
-    border-left: 4px solid #002f6c;
+    color: #555;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+    font-size: 0.95rem;
+    line-height: 1.6;
   }
-  #testimonials .testimonial:last-child {
-    margin-bottom: 0;
+  
+  .testimonial-author {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
   }
+  
+  .author-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 1.2rem;
+  }
+  
+  .author-avatar.avatar-sm { background: linear-gradient(135deg, #da1212, #bb1010); }
+  .author-avatar.avatar-jt { background: linear-gradient(135deg, #002f6c, #1a4b99); }
+  .author-avatar.avatar-lk { background: linear-gradient(135deg, #1a7d4b, #0d5a35); }
+  
   #testimonials .author {
     font-weight: 700;
-    color: #da1212;
-    margin-top: 0.25rem;
+    color: #002f6c;
+    font-size: 0.95rem;
   }
 
   /* Contact */
@@ -336,11 +427,103 @@
     outline: none;
   }
 
+  /* Footer */
+  #footer-section {
+    background-color: #002f6c;
+    color: white;
+    padding: 3rem 20px 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .footer-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 960px;
+    margin: 0 auto 2rem;
+    gap: 2rem;
+  }
+
+  .footer-column h3 {
+    color: #fff;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-bottom: 2px solid #da1212;
+    padding-bottom: 0.5rem;
+  }
+
+  .footer-column p {
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .footer-column a {
+    color: #fff;
+    transition: color 0.3s ease;
+  }
+
+  .footer-column a:hover {
+    color: #da1212;
+  }
+
+  .footer-column ul {
+    list-style: none;
+  }
+
+  .footer-column ul li {
+    margin-bottom: 0.6rem;
+  }
+
+  .footer-column ul li a {
+    display: inline-block;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .social-links a:hover {
+    background-color: #da1212;
+    color: white;
+  }
+
+  .footer-bottom {
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 1.5rem;
+  }
+
+  .footer-bottom p {
+    margin: 0.3rem 0;
+    font-size: 0.9rem;
+  }
+
   /* Responsive */
   @media (max-width: 600px) {
     nav ul {
       gap: 1rem;
       flex-wrap: wrap;
+    }
+    #about {
+      flex-direction: column;
+    }
+    #about-image {
+      width: 100%;
+      height: 250px;
     }
     #services .service-list {
       flex-direction: column;
@@ -348,6 +531,17 @@
     }
     #services .service {
       width: 90%;
+    }
+    #testimonials .testimonial-list {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    .footer-container {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    .social-links {
+      justify-content: center;
     }
   }
 </style>
@@ -379,26 +573,49 @@
 </section>
 
 <section id="about" role="region" aria-labelledby="about-heading">
-  <h2 id="about-heading">About Us</h2>
-  <p>We pride ourselves on delivering superior residential and commercial electrical services. Our skilled electricians ensure safety, quality, and customer satisfaction for every project.</p>
+  <div id="about-image">
+    <img src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=500&h=400&fit=crop" alt="Professional electrical work">
+  </div>
+  <div id="about-content">
+    <h2 id="about-heading">About Us</h2>
+    <p>We pride ourselves on delivering superior residential and commercial electrical services. Our skilled electricians ensure safety, quality, and customer satisfaction for every project.</p>
+  </div>
 </section>
 
 <section id="services" role="region" aria-labelledby="services-heading">
   <h2 id="services-heading">Our Services</h2>
   <div class="service-list" role="list">
     <article class="service" role="listitem">
+      <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+      </svg>
       <h3>Residential Electrical</h3>
       <p>Complete home wiring, lighting, and electrical repairs done with care.</p>
     </article>
     <article class="service" role="listitem">
+      <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 21h18V9H3z"></path>
+        <path d="M3 9V3h18v6"></path>
+        <line x1="9" y1="21" x2="9" y2="9"></line>
+        <line x1="15" y1="21" x2="15" y2="9"></line>
+      </svg>
       <h3>Commercial Electrical</h3>
       <p>Reliable electrical installation and maintenance for businesses big and small.</p>
     </article>
     <article class="service" role="listitem">
+      <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+      </svg>
       <h3>Electrical Safety Inspections</h3>
       <p>Certified inspections ensuring your property meets all electrical safety standards.</p>
     </article>
     <article class="service" role="listitem">
+      <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="12" y1="8" x2="12" y2="16"></line>
+        <line x1="8" y1="12" x2="16" y2="12"></line>
+      </svg>
       <h3>Emergency Electrical Services</h3>
       <p>Fast response for electrical emergencies 24/7 so you’re never left in the dark.</p>
     </article>
@@ -407,9 +624,30 @@
 <section id="testimonials" role="region" aria-labelledby="testimonials-heading">
   <h2 id="testimonials-heading">Testimonials</h2>
   <div class="testimonial-list">
-    <blockquote class="testimonial">“Pro Electrician did an amazing job rewiring our house. Highly recommend!”<footer class="author">- Sarah M.</footer></blockquote>
-    <blockquote class="testimonial">“Reliable, professional, and affordable. Couldn't ask for more.”<footer class="author">- James T.</footer></blockquote>
-    <blockquote class="testimonial">“Excellent service and great communication throughout the project.”<footer class="author">- Lisa K.</footer></blockquote>
+    <blockquote class="testimonial">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-quote">"Pro Electrician did an amazing job rewiring our house. Highly recommend!"</p>
+      <div class="testimonial-author">
+        <div class="author-avatar avatar-sm">SM</div>
+        <footer class="author">Sarah M.</footer>
+      </div>
+    </blockquote>
+    <blockquote class="testimonial">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-quote">"Reliable, professional, and affordable. Couldn't ask for more."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar avatar-jt">JT</div>
+        <footer class="author">James T.</footer>
+      </div>
+    </blockquote>
+    <blockquote class="testimonial">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-quote">"Excellent service and great communication throughout the project."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar avatar-lk">LK</div>
+        <footer class="author">Lisa K.</footer>
+      </div>
+    </blockquote>
   </div>
 </section>
 
@@ -427,9 +665,47 @@
   </form>
 </section>
 
-<footer style="background-color: #002f6c; color: white; text-align: center; padding: 2rem 20px; margin-top: 2rem;">
-  <p>&copy; 2026 Pro Electrician. All rights reserved.</p>
-  <p style="font-size: 0.9rem; margin-top: 0.5rem;">Licensed | Insured | Professional</p>
+<footer id="footer-section" role="contentinfo">
+  <div class="footer-container">
+    <div class="footer-column">
+      <h3>Contact Info</h3>
+      <p><strong>Phone:</strong> <a href="tel:+15555551234">(555) 555-1234</a></p>
+      <p><strong>Email:</strong> <a href="mailto:support@proelectriciannow.com">support@proelectriciannow.com</a></p>
+      <p><strong>Address:</strong> 123 Main Street, Anytown, ST 12345</p>
+      <p><strong>Hours:</strong> Mon-Fri 7am-6pm | Sat 8am-4pm | Sun Closed</p>
+    </div>
+    
+    <div class="footer-column">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-column">
+      <h3>Follow Us</h3>
+      <div class="social-links">
+        <a href="https://facebook.com/proelectrician" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <a href="https://twitter.com/proelectrician" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M23.953 4.57a10 10 0 002.856-3.875c-1.009.469-2.087.776-3.187.807 1.145-1.106 2.024-2.826 2.437-4.852-.996.591-2.1 1.024-3.278 1.256-.94-1.16-2.28-1.88-3.74-1.88-2.827 0-5.142 2.276-5.142 5.084 0 .398.05.784.144 1.159-4.27-.215-8.053-2.199-10.584-5.23-.442.762-.694 1.642-.694 2.586 0 1.764.9 3.317 2.268 4.23-.835-.026-1.622-.256-2.31-.637v.065c0 2.462 1.75 4.513 4.07 4.976-.426.116-.875.176-1.338.176-.326 0-.645-.026-.952-.075.633 1.956 2.445 3.379 4.6 3.419-1.738 1.356-3.92 2.162-6.287 2.162-.408 0-.81-.024-1.207-.071 2.273 1.456 4.934 2.303 7.8 2.303 9.36 0 14.46-7.751 14.46-14.46 0-.22-.005-.44-.015-.66.993-.715 1.85-1.61 2.53-2.63z"/></svg>
+        </a>
+        <a href="https://linkedin.com/company/pro-electrician" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.475-2.236-1.986-2.236-1.081 0-1.722.722-2.004 1.418-.103.249-.129.597-.129.945v5.442h-3.554s.05-8.83 0-9.744h3.554v1.379c-.009.015-.021.029-.033.042h.033v-.042c.43-.664 1.199-1.61 2.919-1.61 2.135 0 3.734 1.39 3.734 4.379v5.596zM5.337 8.855c-1.144 0-1.915-.762-1.915-1.715 0-.953.77-1.715 1.958-1.715 1.187 0 1.927.762 1.927 1.715 0 .953-.74 1.715-1.97 1.715zm1.581 11.597H3.771V9.557h3.147v10.895zM22.224 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.224 0z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <p>&copy; 2026 Pro Electrician. All rights reserved.</p>
+    <p>Licensed | Insured | Professional</p>
+  </div>
 </footer>
 
 <script src="js/script.js"></script>
