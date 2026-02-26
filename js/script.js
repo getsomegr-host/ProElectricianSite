@@ -3,6 +3,16 @@ const menu = document.getElementById('primary-menu');
 const contactForm = document.getElementById('contact-form');
 const formMessage = document.getElementById('form-message');
 
+function trackConversion(eventName, eventData = {}) {
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', eventName, eventData);
+    return;
+  }
+  if (Array.isArray(window.dataLayer)) {
+    window.dataLayer.push({ event: eventName, ...eventData });
+  }
+}
+
 // Mobile menu toggle
 menuToggle.addEventListener('click', () => {
   const expanded = menuToggle.getAttribute('aria-expanded') === 'true' || false;
@@ -42,6 +52,44 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
   });
 });
 
+const heroCallBtn = document.querySelector('.hero-call-btn');
+if (heroCallBtn) {
+  heroCallBtn.addEventListener('click', () => {
+    trackConversion('click_call_now', {
+      event_category: 'engagement',
+      event_label: 'hero_call_now'
+    });
+  });
+}
+
+const heroEstimateBtn = document.querySelector('.hero-estimate-btn');
+if (heroEstimateBtn) {
+  heroEstimateBtn.addEventListener('click', () => {
+    trackConversion('click_get_estimate', {
+      event_category: 'engagement',
+      event_label: 'hero_get_free_estimate'
+    });
+  });
+}
+
+document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+  link.addEventListener('click', () => {
+    trackConversion('click_phone_link', {
+      event_category: 'engagement',
+      event_label: link.getAttribute('href') || 'phone_link'
+    });
+  });
+});
+
+document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+  link.addEventListener('click', () => {
+    trackConversion('click_email_link', {
+      event_category: 'engagement',
+      event_label: link.getAttribute('href') || 'email_link'
+    });
+  });
+});
+
 // Form submission
 contactForm.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -78,6 +126,10 @@ contactForm.addEventListener('submit', async (e) => {
     const data = await response.json();
     
     if (response.ok) {
+      trackConversion('submit_contact_form', {
+        event_category: 'lead',
+        event_label: 'contact_form_success'
+      });
       showFormMessage('Message sent successfully! We\'ll be in touch soon.', 'success');
       contactForm.reset();
     } else {

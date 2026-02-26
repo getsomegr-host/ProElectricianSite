@@ -8,6 +8,51 @@
 <meta property="og:title" content="Pro Electrician - Professional Electrical Services" />
 <meta property="og:description" content="Your trusted source for professional electrical services with quality and safety at heart." />
 <meta name="theme-color" content="#002f6c" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3MNF06XJ72"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3MNF06XJ72');
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Electrician",
+  "name": "Pro Electricians Corp",
+  "url": "https://proelectriciannow.com",
+  "telephone": "+1-800-568-5450",
+  "email": "support@proelectriciannow.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "1100 Miles Ct",
+    "addressLocality": "Cheltenham",
+    "addressRegion": "PA",
+    "postalCode": "19012",
+    "addressCountry": "US"
+  },
+  "areaServed": "Greater Philadelphia, PA",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "07:00",
+      "closes": "18:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "08:00",
+      "closes": "16:00"
+    }
+  ],
+  "sameAs": [
+    "https://facebook.com/proelectricianscorp"
+  ]
+}
+</script>
 <title>Pro Electrician - Professional Electrical Services</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>" />
 <style>
@@ -202,6 +247,21 @@
     background-color: #bb1010;
     outline: none;
   }
+  #hero .hero-cta-group {
+    display: flex;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  #hero .btn-secondary {
+    background-color: rgba(255,255,255,0.15);
+    border: 2px solid #fff;
+    box-shadow: none;
+  }
+  #hero .btn-secondary:hover,
+  #hero .btn-secondary:focus {
+    background-color: rgba(255,255,255,0.25);
+  }
 
   @media (max-width: 900px) {
     #hero {
@@ -234,6 +294,13 @@
     }
     #hero .logo {
       width: 140px;
+    }
+    #hero .hero-cta-group {
+      flex-direction: column;
+      width: min(95vw, 320px);
+    }
+    #hero .hero-cta-group .btn {
+      width: 100%;
     }
   }
 
@@ -597,7 +664,10 @@
   <img src="images/pro-electrician-logo.png" alt="Pro Electrician Logo" class="logo" />
   <h1>Pro Electrician</h1>
   <p>Your trusted source for professional electrical services with quality and safety at heart.</p>
-  <button class="btn" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })">Contact Us</button>
+  <div class="hero-cta-group">
+    <a class="btn hero-call-btn" href="tel:+18005685450">Call Now: (800) 568-5450</a>
+    <a class="btn btn-secondary hero-estimate-btn" href="#contact">Get Free Estimate</a>
+  </div>
 </section>
 
 <section id="about" role="region" aria-labelledby="about-heading">
