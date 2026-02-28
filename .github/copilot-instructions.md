@@ -1,42 +1,40 @@
-# Copilot instructions for ProElectricianSite
+﻿# Project Guidelines
 
-## Project shape (read first)
-- This is a static marketing site with no frontend build step.
-- Core files:
-  - `index.html`: single-page content (nav, services, testimonials, projects, contact form).
-  - `css/styles.css`: all styling and responsive behavior.
-  - `js/script.js`: all client-side interactions.
-  - `contact.php`: backend endpoint for contact form submission (JSON responses + `mail()`).
-- Keep solutions framework-free; do not introduce bundlers, npm tooling, or SPA routing.
+## Code Style
+- Keep this repo framework-free and static-first; do not add bundlers, npm tooling, or SPA routing.
+- Follow the current split: structure in `index.html`, styling in `css/styles.css`, behavior in `js/script.js`, backend form handling in `contact.php`.
+- Preserve JS hook selectors and ARIA contracts used by scripts (`#primary-menu`, `.menu-toggle`, `#contact-form`, `#form-message`, `#service-filter`, `#image-modal`).
+- Keep the existing palette/tokens in `css/styles.css` (notably `#002f6c` and `#da1212`) unless a rebrand is explicitly requested.
 
-## Data flow and integration points
-- Contact flow is `index.html` form (`#contact-form`) -> `fetch('contact.php')` in `js/script.js` -> JSON from `contact.php`.
+## Architecture
+- Single-page marketing site; `index.html` contains nav, services, projects/testimonials, and contact section.
+- Contact flow: `#contact-form` in `index.html` -> `fetch('contact.php')` in `js/script.js` -> JSON response from `contact.php`.
 - Frontend expects `{ success: true, message: ... }` on success and `{ error: ... }` on failure.
-- Analytics events use `trackConversion()` in `js/script.js`, preferring `window.gtag` with `dataLayer` fallback.
-- External dependencies are CDN/hosted only (Google Fonts, Google Analytics, Unsplash image URLs).
+- Service filtering/autocomplete reads each `.service` cards `h3` and text content; keep service card structure consistent.
 
-## Editing conventions in this repo
-- Preserve IDs/classes used by JS hooks: `#primary-menu`, `.menu-toggle`, `#contact-form`, `#form-message`, `#service-filter`, `#image-modal`.
-- Services are authored as repeated `<article class="service">` blocks in `index.html`; filtering in `js/script.js` depends on each card’s `h3` and text content.
-- Match existing design tokens and palette in `css/styles.css` (`#002f6c` blue, `#da1212` red) unless explicitly asked to rebrand.
-- Keep accessibility attributes and patterns intact (`aria-expanded`, `aria-invalid`, `aria-live`, dialog `aria-hidden`).
+## Build and Test
+- No build step. Quick static preview: open `index.html` directly.
+- Full local behavior (required for form POST): `php -S localhost:8000` then open `http://localhost:8000`.
+- Static server alternative (no PHP form handling): `python -m http.server 8000`.
+- Useful checks agents can run:
+  - `php -l contact.php`
+  - `curl -i http://localhost:8000/contact.php` (expect `405`)
+  - `curl -i -X POST -d "name=Test&email=test@example.com&message=Hello" http://localhost:8000/contact.php`
+- Manual verification focus: mobile menu open/close + outside click + `Esc`, service filtering + inline autocomplete, project image modal, contact form success/error messaging.
 
-## Scripts and maintenance
-- `scripts/update_services_icons.py` rewrites service card emoji icons in `index.html`.
-- That script currently uses a hard-coded absolute path; if you touch it, prefer repo-relative path handling.
-- When editing service titles, update the Python `emoji_map` to avoid falling back to default icon behavior.
+## Project Conventions
+- Make surgical edits; avoid broad HTML/CSS rewrites for single-section changes.
+- Do not rename form fields (`name`, `email`, `message`) unless both `js/script.js` and `contact.php` are updated together.
+- Keep accessibility behavior intact (`aria-expanded`, `aria-invalid`, `aria-live`, modal `aria-hidden`).
+- `scripts/update_services_icons.py` rewrites service icons in `index.html`; when changing service titles, update `emoji_map` accordingly.
+- If touching that script, prefer repo-relative paths; it currently uses a hard-coded absolute path and has a `sys.exit(...)` path without importing `sys`.
 
-## Local dev + verification workflow
-- Quick preview (static only): open `index.html` directly.
-- Full behavior (required for form POST): run `php -S localhost:8000` from repo root and open `http://localhost:8000`.
-- If using Python scripts, run from repo root with the workspace venv Python.
-- There is no automated test suite; verify manually:
-  - mobile menu open/close + outside-click + `Esc`
-  - service filtering and datalist suggestions
-  - project image modal open/close
-  - contact form validation + success/error messaging
+## Integration Points
+- Analytics events are centralized via `trackConversion()` in `js/script.js` (`window.gtag` first, `dataLayer` fallback).
+- External dependencies are hosted/CDN resources (Google Fonts, Google Analytics, Unsplash image URLs).
+- Keep endpoint contract stable for frontend/backend interoperability.
 
-## Change scope guardrails
-- Make surgical edits; avoid broad HTML/CSS rewrites for single-section requests.
-- Do not rename form fields (`name`, `email`, `message`) without updating both JS `FormData` and `contact.php`.
-- Do not add dependencies or new infrastructure unless the task explicitly requests it.
+## Security
+- `contact.php` currently enforces POST-only requests, field presence, email validation, and JSON responses.
+- Do not commit credentials or secrets; mail and domain config must stay environment-specific.
+- Production hardening note: CSRF protection, rate limiting, and abuse controls are not implemented in this repo; do not imply they exist.
