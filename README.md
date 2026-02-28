@@ -19,6 +19,38 @@ Demo: https://proelectriciannow.com/RepoTest/
 
   and visit: http://localhost:8000/
 
+## Command snippets
+
+URL
+
+```txt
+http://localhost:8000/
+```
+
+Start local PHP server (from project root)
+
+```powershell
+php -S localhost:8000 -t .
+```
+
+If `php` is not in PATH yet, use full executable path:
+
+```powershell
+& "C:\Users\tmill\AppData\Local\Microsoft\WinGet\Packages\PHP.PHP.8.4_Microsoft.Winget.Source_8wekyb3d8bbwe\php.exe" -S localhost:8000 -t "C:\Users\tmill\OneDrive\Documents\ProElectric\ProElectricianSite"
+```
+
+Stop local server
+
+```txt
+In the terminal running the server: Ctrl + C
+```
+
+Agent/background terminal stop (Copilot tool)
+
+```txt
+kill_terminal id=7da9c555-fa73-425d-a449-fb2f46c26e04
+```
+
 ## Usage
 
 Edit `index.html`, files under `js/`, `scripts/`, and `images/` to customize the site content and assets.
